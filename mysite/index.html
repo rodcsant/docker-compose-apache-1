@@ -1,0 +1,86 @@
+<html>
+
+<h2><strong>Este &eacute; o meu exerc&iacute;cio de docker-compose para o bootcamp DevOps DIO/Impulso</strong></h2>
+
+<p>Docker compose &eacute; uma ferramenta desenvolvida para ajudar a definir e compartilhar aplicativos com v&aacute;rios containers. Com o compose, voc&ecirc; pode criar um arquivo<strong> YAML</strong> para definir os servi&ccedil;os e com um &uacute;nico comando, pode rodar todos os containers ou par&aacute;-los.</p>
+
+<p>A vers&atilde;o do Compose precisa acompanhar a vers&atilde;o do Docker, ou seja, &eacute; necess&aacute;rio verificar no site do Docker a vers&atilde;o correspondente.</p>
+
+<p>Os par&acirc;metros a ser definidos s&atilde;o: services, environment, ports, volumes e networks.</p>
+
+<p><u>Para instalar</u>:<br />
+apt-get install -y docker-compose</p>
+
+<p><u>Crie alguns diret&oacute;rios para nossos arquivos</u>:<br />
+mkdir /data<br />
+cd /data<br />
+mkdir mysql-C<br />
+cd /<br />
+mkdir /compose<br />
+cd /compose<br />
+mkdir /first<br />
+cd /first</p>
+
+<p><u>Crie o yaml</u>:<br />
+nano docker-compose.yml</p>
+
+<p><u>Insira no arquivo</u>:<br />
+version: &#39;3.8&#39;</p>
+
+<p>services:<br />
+&nbsp; mysqlsrv:<br />
+&nbsp; &nbsp; image: mysql:5.7<br />
+&nbsp; &nbsp; environment:<br />
+&nbsp; &nbsp; &nbsp; MYSQL_ROOT_PASSWORD: &quot;Senha123&quot;<br />
+&nbsp; &nbsp; &nbsp; MYSQL_DATABASE: &quot;testedb&quot;<br />
+&nbsp; &nbsp; ports:<br />
+&nbsp; &nbsp; &nbsp; - &quot;3306:3306&quot;<br />
+&nbsp; &nbsp; volumes:<br />
+&nbsp; &nbsp; &nbsp; - /data/mysql-C:/var/lib/mysql<br />
+&nbsp; &nbsp; networks:<br />
+&nbsp; &nbsp; &nbsp; - minha-rede</p>
+
+<p>&nbsp; adminer:<br />
+&nbsp; &nbsp; image: adminer<br />
+&nbsp; &nbsp; ports:<br />
+&nbsp; &nbsp; &nbsp; - 8080:8080<br />
+&nbsp; &nbsp; networks:<br />
+&nbsp; &nbsp; &nbsp; - minha-rede</p>
+
+<p>networks:&nbsp;<br />
+&nbsp; minha-rede:<br />
+&nbsp; &nbsp; driver: bridge<br />
+-------------------------------------------<br />
+Salve e saia.</p>
+
+<p><u>Para executar o yaml</u>:<br />
+docker-compose up -d<br />
+# &lt;filename&gt; up &lt;parameter&gt;<br />
+# -d execu&ccedil;&atilde;o em segundo plano</p>
+
+<p>Fa&ccedil;a o teste no browser com o IP do host para executar o adminer.<br />
+http://[IP]:8080</p>
+
+<p>Servidor: [nome-do-servi&ccedil;o-criado]<br />
+Usu&aacute;rio: [root]<br />
+Senha: [Senha123]<br />
+Base de dados: [nome-do-db-criado]</p>
+
+<p>Para encerrar:<br />
+docker-compose down<br />
+# &lt;filename&gt; down &lt;parameter&gt;</p>
+
+<p>Estrutura SQL<br />
+-------------------------<br />
+Nome da coluna &nbsp;&nbsp; &nbsp;Tipo&nbsp;&nbsp; &nbsp; Tamanho &nbsp;&nbsp; &nbsp;<br />
+Id&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;int&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 11<br />
+Nome&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;varchar &nbsp; &nbsp;50<br />
+Cidade&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;varchar &nbsp; &nbsp;30<br />
+Salario&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;decimal &nbsp; 10,2<br />
+-------------------------</p>
+
+<p><img alt="smiley" height="23" src="https://clevert.com.br/lib/ckeditor/plugins/smiley/images/regular_smile.png" title="smiley" width="23" /></p>
+
+<address>&nbsp;</address>
+
+</html>
