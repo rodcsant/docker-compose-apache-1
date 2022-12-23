@@ -1,4 +1,4 @@
 # docker-compose-apache-1
-Files for DIO/Impulso AWS DevOps Bootcamp. Docker-compose module.
-In this project I made a docker-composer file to publish a HTML site with Apache.
-This is an automation practical lab.
+Simple project made to publish a HTML site with Apache using docker-composer file for automation and deployment
+---
+Projeto realizado durante o bootcamp da DIO Jornada DevOps com AWS DIO - Impulso, ministrado por https://github.com/denilsonbonatti
